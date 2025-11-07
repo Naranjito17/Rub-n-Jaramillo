@@ -1,0 +1,233 @@
+/* =============================================================
+   PANEL IZQUIERDO FIJO + CONTENIDO ADAPTABLE (RESPONSIVE REAL)
+   Autor: Diego A.L.B.
+   ============================================================= */
+
+/* 🎨 COLORES BASE */
+:root {
+  --verde-oscuro: #2E402D;
+  --verde-oliva: #5E6F4E;
+  --beige: #EDE9DA;
+  --blanco: #ffffff;
+  --texto: #222;
+  --gris-fondo: #f4f5f6;
+  --sombra: rgba(0, 0, 0, 0.1);
+}
+
+/* 🔄 RESETEO */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", "Poppins", sans-serif;
+}
+
+/* =============================
+   🧭 ESTRUCTURA GENERAL
+   ============================= */
+body {
+  display: flex;
+  flex-direction: row;
+  background: var(--gris-fondo);
+  color: var(--texto);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* =============================
+   📋 PANEL IZQUIERDO FIJO
+   ============================= */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  background: linear-gradient(180deg, var(--verde-oscuro), var(--verde-oliva));
+  color: var(--blanco);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  padding: 20px 18px;
+  transition: transform 0.3s ease;
+}
+
+/* Encabezado del panel */
+.sidebar-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.sidebar-header h2 {
+  font-size: 20px;
+  font-weight: 700;
+}
+.sidebar-header small {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 13px;
+}
+
+/* Navegación dentro del panel */
+.sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.sidebar-nav a {
+  text-decoration: none;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.sidebar-nav a:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(5px);
+}
+.sidebar-nav a.active {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Pie del panel */
+.sidebar-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  padding-top: 15px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* =============================
+   📄 CONTENIDO PRINCIPAL
+   ============================= */
+.main-content {
+  flex: 1;
+  margin-left: 260px;
+  padding: 30px 40px;
+  min-height: 100vh;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 1100px;
+}
+
+/* Tarjetas de datos */
+.card {
+  background: var(--blanco);
+  border-radius: 14px;
+  box-shadow: 0 6px 20px var(--sombra);
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+.card h3 {
+  color: var(--verde-oscuro);
+  margin-bottom: 10px;
+}
+
+/* =============================
+   🔘 BOTONES
+   ============================= */
+button, .btn {
+  background: var(--verde-oscuro);
+  color: var(--blanco);
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+button:hover, .btn:hover {
+  background: var(--verde-oliva);
+  transform: scale(1.03);
+}
+
+/* =============================
+   📱 RESPONSIVE COMPLETO
+   ============================= */
+@media (max-width: 1024px) {
+  .main-content {
+    margin-left: 230px;
+    padding: 25px;
+  }
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    width: 220px;
+  }
+  .main-content {
+    margin-left: 220px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  .sidebar-header {
+    display: none; /* Se oculta el título para más espacio */
+  }
+
+  .sidebar-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .sidebar-nav a {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+
+  .sidebar-footer {
+    display: none;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: 15px;
+    align-items: stretch;
+  }
+
+  .card {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar-nav a {
+    font-size: 13px;
+    padding: 6px 8px;
+  }
+  .main-content {
+    padding: 10px;
+  }
+}

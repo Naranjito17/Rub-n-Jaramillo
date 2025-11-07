@@ -1,0 +1,638 @@
+/* ============================================================
+   style.css — Estilo Moderno Tech UI
+   Autor: Diego A.L.B.
+   ============================================================ */
+
+/* 🎨 PALETA PRINCIPAL */
+:root {
+  --verde-oscuro: #2E402D;
+  --verde-oliva: #5E6F4E;
+  --beige: #D2C8A4;
+  --blanco: #ffffff;
+  --text: #1b1b1b;
+  --muted: #777777;
+
+  --gradient-main: linear-gradient(135deg, #2E402D, #5E6F4E);
+  --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* 🧹 REINICIO GENERAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Inter", "Poppins", sans-serif;
+  background: #f3f4f6;
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================================
+   CABECERA
+   ============================================================ */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--gradient-main);
+  color: var(--blanco);
+  padding: 14px 22px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.logo img {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.logo img:hover {
+  transform: rotate(6deg) scale(1.05);
+}
+.logo h1 {
+  font-size: 20px;
+  margin: 0;
+  font-weight: 700;
+}
+.logo small {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+}
+.main-nav {
+  display: flex;
+  gap: 12px;
+}
+.main-nav a {
+  color: var(--blanco);
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: all 0.25s ease;
+}
+.main-nav a:hover,
+.main-nav a.active {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.user-badge {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+.btn.small {
+  background: #ffffff22;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+.btn.small:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* ============================================================
+   CONTENEDOR PRINCIPAL
+   ============================================================ */
+.container {
+  max-width: 1200px;
+  margin: 24px auto;
+  padding: 0 20px;
+  flex: 1;
+}
+.page {
+  display: none;
+  animation: fadeIn 0.4s ease forwards;
+}
+.page.active {
+  display: block;
+}
+.card {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 18px 20px;
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 18px;
+  backdrop-filter: blur(12px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* ============================================================
+   POSTS Y NOTICIAS
+   ============================================================ */
+.post-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 18px;
+  padding: 14px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: var(--shadow-soft);
+}
+.post-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+.post-image {
+  width: 220px;
+  height: 130px;
+  border-radius: 10px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.post-card:hover .post-image {
+  transform: scale(1.03);
+}
+.post-body h3 {
+  margin: 0 0 6px;
+  font-weight: 700;
+}
+.meta {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+/* ============================================================
+   SOCIAL / PUBLICACIONES
+   ============================================================ */
+.feed .social-post {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 14px;
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 12px;
+  transition: all 0.3s ease;
+}
+.feed .social-post:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+.social-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.social-img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+/* ============================================================
+   FORMULARIOS Y BOTONES
+   ============================================================ */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select,
+input[type="date"] {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #e2e2e2;
+  border-radius: 10px;
+  margin: 6px 0 12px;
+  background: #fbfbfb;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--verde-oliva);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(94, 111, 78, 0.2);
+}
+button.btn {
+  background: var(--gradient-main);
+  color: var(--blanco);
+  border: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+button.btn:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-hover);
+}
+button.ghost {
+  background: transparent;
+  border: 2px solid #d9d9d9;
+  color: #444;
+  font-weight: 600;
+}
+button.ghost:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* ============================================================
+   ARCHIVOS
+   ============================================================ */
+.file-list .file-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #f0f0f0;
+  background: #fff;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 10px;
+}
+.file-download {
+  color: var(--verde-oscuro);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.file-download:hover {
+  color: var(--verde-oliva);
+}
+
+/* ============================================================
+   ORGANIGRAMA
+   ============================================================ */
+.org-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.org-box {
+  background: var(--beige);
+  padding: 14px 22px;
+  border-radius: 14px;
+  color: var(--verde-oscuro);
+  font-weight: 700;
+  box-shadow: var(--shadow-soft);
+}
+.org-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ============================================================
+   CITAS
+   ============================================================ */
+.appointment-item {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  background: #fff;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow-soft);
+}
+.appointment-item strong {
+  display: block;
+  color: var(--verde-oscuro);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  text-align: center;
+  padding: 20px;
+  color: var(--muted);
+  background: #f1f1f1;
+  font-size: 14px;
+}
+
+/* ============================================================
+   RESPONSIVE Y ANIMACIONES
+   ============================================================ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+@media (max-width: 900px) {
+  .main-nav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: rgba(46, 64, 45, 0.95);
+    padding: 16px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-hover);
+  }
+  .main-nav.active {
+    display: flex;
+  }
+  .menu-toggle {
+    display: block;
+  }
+  .post-card {
+    flex-direction: column;
+  }
+  .post-image {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+/* ============================================================
+   DETALLES EXTRA Y EFECTOS
+   ============================================================ */
+.empty {
+  text-align: center;
+  color: #666;
+  padding: 20px;
+  font-size: 15px;
+}
+h2 {
+  margin-bottom: 16px;
+  color: var(--verde-oscuro);
+  position: relative;
+}
+h2::after {
+  content: "";
+  width: 50px;
+  height: 3px;
+  background: var(--verde-oliva);
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  border-radius: 2px;
+}
+
+/* ============================================================
+   🧭 PANEL INSTITUCIONAL LATERAL IZQUIERDO — Versión Final
+   ============================================================ */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 260px;
+  background: linear-gradient(180deg, #011f0a, #070e00);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+  overflow-y: auto;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.25);
+  transition: left 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1000;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.sidebar-header {
+  text-align: center;
+  padding: 24px 10px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+}
+.sidebar-header img.sidebar-logo {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+.sidebar-header h2 {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+.sidebar-header p {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* 🔹 Enlaces de navegación */
+.sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: 8px;
+}
+.sidebar-nav a {
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #f1f1f1;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  transition: all 0.3s ease;
+}
+.sidebar-nav a:hover {
+  background: rgba(255, 255, 255, 0.15);
+  padding-left: 30px;
+}
+.sidebar-nav a.active {
+  background: rgba(255, 255, 255, 0.25);
+  border-left: 4px solid #ffffff;
+}
+
+/* 🔹 Pie del panel */
+.sidebar-footer {
+  text-align: center;
+  padding: 18px 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+}
+.sidebar-footer .btn {
+  background: #fff;
+  color: #003366;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.sidebar-footer .btn:hover {
+  background: #eaeaea;
+  transform: scale(1.05);
+}
+
+/* ============================================================
+   📄 CONTENIDO PRINCIPAL AJUSTADO
+   ============================================================ */
+
+.site-header {
+  border-bottom-left-radius: 16px;
+}
+.container {
+  padding: 24px 30px;
+}
+
+/* ============================================================
+   📱 MODO RESPONSIVO
+   ============================================================ */
+@media (max-width: 900px) {
+  .sidebar {
+    left: -260px;
+  }
+  .sidebar.active {
+    left: 0;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.4);
+  }
+  .main-content {
+    margin-left: 0;
+  }
+  .btn-menu {
+    display: inline-block;
+    background: none;
+    border: none;
+    font-size: 26px;
+    color: #fff;
+    cursor: pointer;
+  }
+}
+.post-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn-like, .btn-comment {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: transform 0.2s ease;
+}
+
+.btn-like:hover, .btn-comment:hover {
+  transform: scale(1.1);
+  color: #005b96;
+}
+
+.comments-box {
+  margin-top: 10px;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+
+.comment-form {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 8px;
+}
+
+.comment-form input {
+  flex: 1;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.comment-form button {
+  background: #005b96;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.comment {
+  background: #f7f9fb;
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 6px;
+}
+.like-btn {
+  background: transparent;
+  border: none;
+  color: var(--verde-oscuro);
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.like-btn:hover {
+  transform: scale(1.1);
+}
+
+.like-btn.liked {
+  color: #e63946;
+}
+
+.comment-section {
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.comment-form {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.comment-input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.comment-list .comment {
+  background: #f9f9f9;
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
